@@ -111,15 +111,15 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 5 — FastAPI + SQLite backend (cooperative inbox)
 - **Workstream:** A
-- **Status:** [~] in progress (Nikhil, Sat 13:05)
+- **Status:** [x] done — /sms/send (≤160, GSM-7, idempotent) + /coop/inbox(.json) parsing §7.1/§7.2 + SYNTHETIC seed; price/alerts 501 stubs; 18 pytest
 - **Depends on:** — 
 - **Where:** `backend/` (except `backend/app/price*` = C, `backend/app/alerts*` = D)
 - **What:** FastAPI app with SQLite (`backend/data/ondera.db`, git-ignored). Endpoints: `POST /sms/send` (mock SMS gateway: stores message, recipient, received_at), `GET /coop/inbox` (simple HTML page for the cooperative officer listing received walk reports, newest first, parsed fields from the SMS template), `GET /health`. Router stubs for `/price/latest` (C) and `/alerts` (D) so others plug in. `requirements.txt`, `README` run instructions, seed script. No photos or audio endpoints, ever.
 - **Minimum:** `/sms/send` + `/coop/inbox` + tests.
 - **Done when:**
-  - [ ] `cd backend && pytest` passes (send → appears in inbox; malformed rejected; >160 chars rejected).
-  - [ ] `uvicorn app.main:app` runs; iOS simulator can reach it at `http://localhost:8000`.
-  - [ ] Inbox page parses the SMS template from `docs/WORKFLOW.md` into columns.
+  - [x] `cd backend && pytest` passes (send → appears in inbox; malformed rejected; >160 chars rejected).
+  - [x] `uvicorn app.main:app` runs; iOS simulator can reach it at `http://localhost:8000`.
+  - [x] Inbox page parses the SMS template from `docs/WORKFLOW.md` into columns.
 
 ### Task 6 — Weekday SMS check-in mock (basic phone)
 - **Workstream:** A
