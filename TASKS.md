@@ -344,7 +344,7 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 24 — Pricing source research and conversion factors
 - **Workstream:** C
-- **Status:** [ ]
+- **Status:** [~] in progress (Tanish Priyadarshi, 2026-10-03 12:49)
 - **Depends on:** —
 - **Where:** `docs/PRICING.md`, `backend/app/price_data/`
 - **What:** Find and verify a free, citable arabica reference price — e.g. **IMF Primary Commodity Prices "Coffee, Other Mild Arabicas"** (US cents/lb, monthly) or **World Bank Pink Sheet "Coffee, Arabica"** (USD/kg, monthly). Record URL, series code, units, frequency, latest value + date, licence/terms. Document every conversion factor with a citation: lb→kg, green ↔ parchment out-turn ratio, FX rate (source + date), and the farm-gate share range (cite a source, e.g. ICO or national coffee board data; if no source found, **don't show a farm-gate range** — only the reference price). Save a dated snapshot CSV/JSON. Produce the worked example used by the pricing template.
