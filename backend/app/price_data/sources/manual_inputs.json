@@ -1,0 +1,32 @@
+{
+  "_note": "Hand-entered values. Each has a source, URL and access date. Do not edit a value without updating its source. See docs/PRICING.md.",
+  "fx_usd_tzs": {
+    "buy": 2626.1188,
+    "sell": 2652.38,
+    "date": "2026-10-03",
+    "source": "Bank of Tanzania, indicative exchange rates (homepage 'Viwango vya Kubadilisha Fedha', 03-Oct-26)",
+    "url": "https://www.bot.go.tz/",
+    "accessed": "2026-10-03",
+    "use": "mid = (buy + sell) / 2"
+  },
+  "parchment_to_green": {
+    "factor": 0.80,
+    "source": "International Coffee Agreement 2001, Article 2(1)(c) (Definitions): parchment coffee to green coffee: 'multiply the net weight of the parchment coffee by 0.80'. ICA 2007, Article 2 keeps the same factor.",
+    "url": "https://m.likumi.lv/ta/id/209279-international-coffee-agreement-2001",
+    "accessed": "2026-10-03"
+  },
+  "tz_farm_gate_arabica_parchment_usd_per_t": {
+    "values": {"2005": 797, "2006": 959, "2007": 1205, "2008": 1254, "2009": 1137, "2010": 1277},
+    "source": "FAO MAFAP, 'Analysis of incentives and disincentives for coffee in the United Republic of Tanzania', technical note, January 2013, Table 6 'Coffee Farm gate Prices 2005-2010', row 'TCB [ARABICA PARCHMENT] (USD/MT)' (data: Tanzania Coffee Board)",
+    "url": "https://openknowledge.fao.org/3/a-at479e.pdf",
+    "accessed": "2026-10-03"
+  },
+  "tcb_headline_auction_price": {
+    "arabica_clean_usd_per_kg": 6.5,
+    "date": "2026-09-30",
+    "source": "Tanzania Coffee Board, 'Bei za minada' (auction prices) widget: 'Arabica - Kahawa Safi ($/Kg) 6.5', 30 Sep 2026",
+    "url": "https://www.coffee.go.tz/auction_prices",
+    "accessed": "2026-10-03",
+    "use": "cross-check only"
+  }
+}

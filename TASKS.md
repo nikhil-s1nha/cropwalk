@@ -344,14 +344,14 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 24 — Pricing source research and conversion factors
 - **Workstream:** C
-- **Status:** [~] in progress (Tanish Priyadarshi, 2026-10-03 12:49)
+- **Status:** [x] done — Tanzania/TZS: Pink Sheet ref 7.26 USD/kg (Sep 2026) → farm-gate 5,700–8,500 TZS/kg parchment (share from FAO MAFAP 2005–10, flagged old); TCB auction prices by grade (4 auctions, 287 lots); EAS 130 size grades; 6 pytest
 - **Depends on:** —
 - **Where:** `docs/PRICING.md`, `backend/app/price_data/`
 - **What:** Find and verify a free, citable arabica reference price — e.g. **IMF Primary Commodity Prices "Coffee, Other Mild Arabicas"** (US cents/lb, monthly) or **World Bank Pink Sheet "Coffee, Arabica"** (USD/kg, monthly). Record URL, series code, units, frequency, latest value + date, licence/terms. Document every conversion factor with a citation: lb→kg, green ↔ parchment out-turn ratio, FX rate (source + date), and the farm-gate share range (cite a source, e.g. ICO or national coffee board data; if no source found, **don't show a farm-gate range** — only the reference price). Save a dated snapshot CSV/JSON. Produce the worked example used by the pricing template.
 - **Minimum:** One verified source + snapshot file + documented conversions (uncited factors marked "not shown").
 - **Done when:**
-  - [ ] `docs/PRICING.md` has source table, each factor with citation + date, worked example, and the limitations (not a buyer offer, quality grades, local premiums).
-  - [ ] No number in the doc lacks a source.
+  - [x] `docs/PRICING.md` has source table, each factor with citation + date, worked example, and the limitations (not a buyer offer, quality grades, local premiums).
+  - [x] No number in the doc lacks a source.
 
 ### Task 25 — Backend `/price/latest`
 - **Workstream:** C
@@ -422,3 +422,54 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 - **Done when:**
   - [ ] `tools/qa/run_checks.sh` passes.
   - [ ] Manual checklist completed on simulator and (ideally) one real iPhone, with date.
+
+---
+
+## Workstream C (added) — Price Check: 100-bean photo → grade range → rough price
+
+Noor hand-hulls ~100 beans, spreads them on white paper with a coin, and takes one photo. The app measures bean sizes (no AI), the AI labels each bean (good / defective / peaberry / not sure), fixed rules turn the mix into a **grade range**, and the price data from Task 24 turns that into a **rough farm-gate price range** with source + date. Never one exact grade, never a promised price. Country: **Tanzania (TZS)**. Grades and prices: `docs/PRICING.md` §4, `backend/app/price_data/grades_TZ.json`. Opened from a new Home button "Bei ya kahawa / Coffee price" (separate from the walk). Screen spec and fixed messages go in `docs/WORKFLOW.md` §11 (added in Task 33/34). **Cut order:** Task 31 (AI) can be cut, and Price Check then runs size-only with "defects not checked".
+
+### Task 31 — Bean dataset + bean classifier (Core ML)
+- **Workstream:** C
+- **Status:** [ ]
+- **Depends on:** —
+- **Where:** `ml/beans/`, output `app/OnderaLeafWalk/Resources/Models/BeanClassifier.mlpackage`
+- **What:** Find + verify a green-bean image dataset (e.g. USK-Coffee: check existence, licence, size, classes). Dedupe + group split. Fine-tune MobileNetV3-Small on single-bean crops → good / defective / peaberry (+ "not sure" by confidence threshold). Team test set: store-bought green beans on white paper with a coin. Export to Core ML **≤ 2 MB** (total model budget < 10 MB). `REPORT.md` with numbers from an actual run (or "not measured").
+- **Minimum:** Model trained on one dataset, exported, honest held-out eval.
+- **Done when:**
+  - [ ] `.mlpackage` ≤ 2 MB committed; input size/normalisation documented.
+  - [ ] REPORT.md: dataset licence, per-class precision/recall, chosen threshold, what the data does not cover (non-Tanzanian beans, lab photos, no parchment).
+
+### Task 32 — Bean measurement (no AI): segmentation, coin scale, screen size
+- **Workstream:** C
+- **Status:** [ ]
+- **Depends on:** 0 (or local stubs)
+- **Where:** `app/OnderaCore/Sources/OnderaCore/PriceCheck/Measure/`, tests in `app/OnderaCore/Tests/`
+- **What:** On an RGBA buffer: threshold beans against white paper, connected components, per-bean minor-axis width (px); the coin the user tapped → mm per px (coin diameter from a cited source); width → EAS size class (`grades_TZ.json`). Reject touching/overlapping blobs and count them as "not measured". Photo quality check (reuse the Task 18 approach).
+- **Minimum:** Segmentation + coin scale + size classes on synthetic test images.
+- **Done when:**
+  - [ ] Tests on generated images (labelled SYNTHETIC): known bean count and widths recovered within tolerance; coin scale; touching beans excluded.
+  - [ ] < 50 measurable beans → "not sure" result.
+
+### Task 33 — Grade range + price rules (pure Swift)
+- **Workstream:** C
+- **Status:** [ ]
+- **Depends on:** 24
+- **Where:** `app/OnderaCore/Sources/OnderaCore/PriceCheck/Rules/`, `docs/WORKFLOW.md` §11 (additive)
+- **What:** Size mix + classifier labels → grade range (classes covering ≥ 80 % of measured beans, largest to smallest), EAS damage class from % defective, "not sure" rules (too few beans, too many unsure, no coin, bad photo). Price: snapshot farm-gate range × `photo_class_price_ratio` mix. Tap questions (drying days, rain while drying, bite test) → fixed "dry more" warning only. All output as fixed message IDs.
+- **Minimum:** Rules + price from size mix only; one test per rule.
+- **Done when:**
+  - [ ] Tests reproduce the `docs/PRICING.md` §4 mix examples (0.999 → 5,700–8,500; 0.897 → 5,100–7,600).
+  - [ ] Every output maps to a fixed message key; nothing promises a price.
+
+### Task 34 — Price Check UI
+- **Workstream:** C
+- **Status:** [ ]
+- **Depends on:** 32, 33 (mocks OK), 4 (mock outbox)
+- **Where:** `app/OnderaLeafWalk/PriceCheck/`, `PriceCheck.xcstrings`
+- **What:** Screens P1 instructions (hull ~100 beans, white paper, coin) → P2 camera (simulator: fixture photo) → P3 tap the coin → P4 three tap questions → P5 result (grade range, price range, source + date, "Makadirio tu", actions) → P6 "send to Mum" SMS preview + confirm → outbox. Swahili-first strings listed in `SWAHILI_REVIEW.md`. The photo stays on the phone.
+- **Minimum:** P1–P5 working in airplane mode with the bundled snapshot.
+- **Done when:**
+  - [ ] Simulator, airplane mode: fixture photo → result with price + source + date.
+  - [ ] SMS only after confirm; SMS has grade range + price only (≤ 160 chars, GSM-7).
+
