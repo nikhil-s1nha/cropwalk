@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "label": "estimate",
+  "is_synthetic": false,
+  "country": "TZ",
+  "built_on": "2026-10-03",
+  "fetched_at": "2026-10-03",
+  "source": "World Bank Commodity Price Data (The Pink Sheet)",
+  "series": "Coffee, Arabica (ICO other milds, ex-dock)",
+  "unit": "USD/kg green coffee",
+  "value": 7.26,
+  "observed_date": "2026-09",
+  "source_file_note": "Updated on October 02, 2026",
+  "fx_rate": 2639.2494,
+  "fx_date": "2026-10-03",
+  "fx_source": "Bank of Tanzania, indicative exchange rates (homepage 'Viwango vya Kubadilisha Fedha', 03-Oct-26)",
+  "conversion": {
+    "parchment_to_green": 0.8,
+    "parchment_equivalent_tzs_per_kg": 15328.8,
+    "farm_gate_share_low": 0.3695,
+    "farm_gate_share_high": 0.5529,
+    "farm_gate_share_by_year": {
+      "2005": 0.3934,
+      "2006": 0.4754,
+      "2007": 0.5529,
+      "2008": 0.5088,
+      "2009": 0.4482,
+      "2010": 0.3695
+    },
+    "farm_gate_share_basis": "TCB arabica parchment farm-gate price / Pink Sheet arabica parchment-equivalent, 2005-2010 (FAO MAFAP 2013, Table 6). OLD DATA - see docs/PRICING.md limitations."
+  },
+  "farm_gate_range": {
+    "low": 5700,
+    "high": 8500,
+    "currency": "TZS",
+    "unit": "kg",
+    "form": "parchment"
+  },
+  "grade_prices": {
+    "source": "Tanzania Coffee Board, Moshi auction results 2026/2027 (kg-weighted, sold lots only)",
+    "auctions": [
+      {
+        "no": "TCB/M/1",
+        "date": "10/SEP/2026"
+      },
+      {
+        "no": "TCB/M/2",
+        "date": "17/SEP/2026"
+      },
+      {
+        "no": "TCB/M/3",
+        "date": "24/SEP/2026"
+      },
+      {
+        "no": "TCB/M/4",
+        "date": "01/OCT/2026"
+      }
+    ],
+    "overall_usd_per_kg_clean": 6.002,
+    "lots_total": 313,
+    "lots_sold": 287,
+    "kg_sold": 775588,
+    "grades": {
+      "A": {
+        "usd_per_kg_clean": 6.289,
+        "ratio_to_all_sold": 1.048,
+        "lots_sold": 41,
+        "kg_sold": 177494
+      },
+      "AA": {
+        "usd_per_kg_clean": 6.332,
+        "ratio_to_all_sold": 1.055,
+        "lots_sold": 44,
+        "kg_sold": 138259
+      },
+      "AB": {
+        "usd_per_kg_clean": 6.203,
+        "ratio_to_all_sold": 1.033,
+        "lots_sold": 11,
+        "kg_sold": 19649
+      },
+      "AF": {
+        "usd_per_kg_clean": 4.569,
+        "ratio_to_all_sold": 0.761,
+        "lots_sold": 16,
+        "kg_sold": 15650
+      },
+      "B": {
+        "usd_per_kg_clean": 6.129,
+        "ratio_to_all_sold": 1.021,
+        "lots_sold": 48,
+        "kg_sold": 234181
+      },
+      "C": {
+        "usd_per_kg_clean": 5.158,
+        "ratio_to_all_sold": 0.859,
+        "lots_sold": 29,
+        "kg_sold": 43038
+      },
+      "E": {
+        "usd_per_kg_clean": 4.7,
+        "ratio_to_all_sold": 0.783,
+        "lots_sold": 4,
+        "kg_sold": 371
+      },
+      "F": {
+        "usd_per_kg_clean": 4.277,
+        "ratio_to_all_sold": 0.713,
+        "lots_sold": 27,
+        "kg_sold": 26570
+      },
+      "PB": {
+        "usd_per_kg_clean": 6.28,
+        "ratio_to_all_sold": 1.046,
+        "lots_sold": 37,
+        "kg_sold": 90710
+      },
+      "TT": {
+        "usd_per_kg_clean": 4.351,
+        "ratio_to_all_sold": 0.725,
+        "lots_sold": 19,
+        "kg_sold": 18131
+      },
+      "UG": {
+        "usd_per_kg_clean": 4.223,
+        "ratio_to_all_sold": 0.704,
+        "lots_sold": 11,
+        "kg_sold": 11535
+      }
+    }
+  },
+  "photo_class_price_ratio": {
+    "E": 0.783,
+    "AA": 1.055,
+    "AB": 1.033,
+    "C": 0.859,
+    "T": 0.725,
+    "PB": 1.046,
+    "defective": 0.725
+  },
+  "cross_check": {
+    "arabica_clean_usd_per_kg": 6.5,
+    "date": "2026-09-30",
+    "source": "Tanzania Coffee Board, 'Bei za minada' (auction prices) widget: 'Arabica - Kahawa Safi ($/Kg) 6.5', 30 Sep 2026",
+    "url": "https://www.coffee.go.tz/auction_prices",
+    "accessed": "2026-10-03",
+    "use": "cross-check only"
+  }
+}

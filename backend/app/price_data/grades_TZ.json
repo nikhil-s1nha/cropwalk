@@ -1,0 +1,37 @@
+{
+  "_note": "Bean-size grades the Price Check photo can estimate, and how each maps to Tanzania Coffee Board auction grades for pricing. Size bands are from EAS 130:1999. The photo-class -> auction-grade mapping is OUR choice (rationale in docs/PRICING.md), not an official rule.",
+  "size_standard": {
+    "source": "East African Standard EAS 130:1999 'Green coffee beans - Specification', Table 1 'Coffee grades by size' (screens per ISO 4150; round holes for flat beans, slotted for peaberries)",
+    "url": "https://law.resource.org/pub/eac/ibr/eas.130.1999.pdf",
+    "accessed": "2026-10-03",
+    "rule": "When a coffee grade is specified, a minimum 95 % of the beans shall fall in that grade category (EAS 130 clause 5.1)."
+  },
+  "size_bands_mm": [
+    {"grade": "E",  "min_mm": 8.3,  "max_mm": null, "eas": "Retained on 21 (8,3 mm); two beans joined / very large"},
+    {"grade": "AA", "min_mm": 7.2,  "max_mm": 8.3,  "eas": "Flat beans, through 21 retained on 18 (7,2 mm)"},
+    {"grade": "AB", "min_mm": 6.35, "max_mm": 7.2,  "eas": "Flat beans, through 18 retained on 16 (6,35 mm)"},
+    {"grade": "C",  "min_mm": 3.96, "max_mm": 6.35, "eas": "Smaller beans, through 16 retained on 10 (3,96 mm)"},
+    {"grade": "T",  "min_mm": 0.0,  "max_mm": 3.96, "eas": "Smallest, brokens; through screen 7 (2,9 mm). Gap 2.9-3.96 mm assigned to T by us."}
+  ],
+  "peaberry": {"grade": "PB", "eas": "Peaberries, through 17 retained on 12 (4,76 mm), slotted screen. Detected by shape (classifier), not width."},
+  "moisture_max_percent": {"value": 10.5, "eas": "EAS 130 clause 4.2.1: moisture content maximum 10,5 % (m/m). The photo cannot measure this."},
+  "damage_classes": {
+    "eas": "EAS 130 clause 4.2.3: classes 1-6 free from damage; class 7 damage up to 5 %; class 8 up to 15 %; class 9 up to 25 %; class 10 up to 60 % of beans.",
+    "bands_percent_damaged": [
+      {"max": 0,  "label": "classes 1-6 (no damage)"},
+      {"max": 5,  "label": "class 7"},
+      {"max": 15, "label": "class 8"},
+      {"max": 25, "label": "class 9"},
+      {"max": 60, "label": "class 10"}
+    ]
+  },
+  "photo_class_to_auction_grades": {
+    "E":  ["E"],
+    "AA": ["AA"],
+    "AB": ["AB", "A", "B"],
+    "C":  ["C"],
+    "T":  ["F", "AF", "TT", "UG"],
+    "PB": ["PB"],
+    "defective": ["F", "AF", "TT", "UG"]
+  }
+}
