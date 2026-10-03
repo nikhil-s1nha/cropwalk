@@ -1,0 +1,82 @@
+# XcodeGen spec. The generated OnderaLeafWalk.xcodeproj is committed, so teammates don't need XcodeGen.
+# Sources are *synchronized folders*: adding/removing files never edits project.pbxproj.
+# Only regenerate (`cd app && xcodegen`) when changing targets/settings here.
+name: OnderaLeafWalk
+options:
+  bundleIdPrefix: org.ondera
+  developmentLanguage: sw
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  OnderaCore:
+    path: OnderaCore
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  OnderaLeafWalk:
+    type: application
+    platform: iOS
+    sources:
+      - path: OnderaLeafWalk
+        type: syncedFolder
+        excludes:
+          - "**/README-*.md"
+    dependencies:
+      - package: OnderaCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.ondera.leafwalk
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Leaf Walk
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        # Swahili drafts — Task 7 to review (docs/SWAHILI_REVIEW.md)
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Programu inahitaji mahali ulipo ili kuchora shamba lako na kukuongoza kwenye vituo. Mahali hapatumwi popote."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Programu inahitaji kamera kupiga picha ya jani. Picha zinabaki kwenye simu hii tu."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Programu inahitaji kipaza sauti kurekodi maelezo yako. Sauti inabaki kwenye simu hii tu."
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+  OnderaLeafWalkTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: OnderaLeafWalkTests
+        type: syncedFolder
+    dependencies:
+      - target: OnderaLeafWalk
+      - package: OnderaCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/OnderaLeafWalk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OnderaLeafWalk"
+  OnderaLeafWalkUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: OnderaLeafWalkUITests
+        type: syncedFolder
+    dependencies:
+      - target: OnderaLeafWalk
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: OnderaLeafWalk
+schemes:
+  OnderaLeafWalk:
+    build:
+      targets:
+        OnderaLeafWalk: all
+    test:
+      targets:
+        - OnderaLeafWalkTests
+        - OnderaLeafWalkUITests
+    run:
+      config: Debug

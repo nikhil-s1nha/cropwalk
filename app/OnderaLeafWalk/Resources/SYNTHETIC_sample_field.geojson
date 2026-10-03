@@ -1,0 +1,18 @@
+{
+  "type": "FeatureCollection",
+  "name": "SYNTHETIC_sample_field",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "kind": "field", "synthetic": true, "note": "SYNTHETIC demo field, not a real farm. ~100 m x 50 m rotated 30 degrees." },
+      "geometry": { "type": "Polygon", "coordinates": [[
+        [36.9497233, -0.4204219], [36.9505013, -0.4199697], [36.9502967, -0.4195769], [36.9495098, -0.4200134], [36.9497233, -0.4204219]
+      ]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "kind": "problemSpot", "radiusM": 10, "synthetic": true },
+      "geometry": { "type": "Point", "coordinates": [36.9501885, -0.419786] }
+    }
+  ]
+}
