@@ -36,7 +36,7 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 0 — Xcode project skeleton, shared models, protocols and mocks
 - **Workstream:** 0 (shared, do first)
-- **Status:** [ ]
+- **Status:** [~] in progress (Nikhil, Sat 13:05)
 - **Depends on:** —
 - **Where:** `app/OnderaLeafWalk.xcodeproj`, `app/OnderaLeafWalk/{Shared,Infra,Walk,EndScreen,Resources}/`, `app/OnderaCore/` (Swift package), `app/OnderaLeafWalkTests/`
 - **What:**
@@ -111,7 +111,7 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 5 — FastAPI + SQLite backend (cooperative inbox)
 - **Workstream:** A
-- **Status:** [ ]
+- **Status:** [~] in progress (Nikhil, Sat 13:05)
 - **Depends on:** — 
 - **Where:** `backend/` (except `backend/app/price*` = C, `backend/app/alerts*` = D)
 - **What:** FastAPI app with SQLite (`backend/data/ondera.db`, git-ignored). Endpoints: `POST /sms/send` (mock SMS gateway: stores message, recipient, received_at), `GET /coop/inbox` (simple HTML page for the cooperative officer listing received walk reports, newest first, parsed fields from the SMS template), `GET /health`. Router stubs for `/price/latest` (C) and `/alerts` (D) so others plug in. `requirements.txt`, `README` run instructions, seed script. No photos or audio endpoints, ever.
