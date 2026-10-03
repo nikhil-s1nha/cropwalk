@@ -1,0 +1,58 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.swiftpm/
+.build/
+Packages/
+Package.resolved.bak
+timeline.xctimeline
+playground.xcworkspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Datasets, checkpoints, local DBs (shipped .mlpackage under app/ is NOT ignored)
+ml/data/
+ml/**/runs/
+ml/**/checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.zip
+*.tar.gz
+backend/data/
+*.sqlite
+*.db
+
+# Generated/raw audio scratch (bundled audio under app/ is NOT ignored)
+tools/audio/out/
+
+# Editors
+.vscode/
+.idea/
