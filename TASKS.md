@@ -36,7 +36,7 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
 
 ### Task 0 — Xcode project skeleton, shared models, protocols and mocks
 - **Workstream:** 0 (shared, do first)
-- **Status:** [~] in progress (Nikhil, Sat 13:05)
+- **Status:** [x] done — XcodeGen project w/ synced folders, OnderaCore pkg (models, 18 protocols + mocks, AppRoute), placeholder flow; 14 swift tests + 3 unit + 2 UI tests
 - **Depends on:** —
 - **Where:** `app/OnderaLeafWalk.xcodeproj`, `app/OnderaLeafWalk/{Shared,Infra,Walk,EndScreen,Resources}/`, `app/OnderaCore/` (Swift package), `app/OnderaLeafWalkTests/`
 - **What:**
@@ -50,11 +50,11 @@ Workstreams: **0** shared · **A** app infra, Swahili, ML · **B** walk feature 
   - Empty per-workstream string tables `Infra.xcstrings`, `Walk.xcstrings`, `EndScreen.xcstrings` with `sw` + `en` languages enabled; dev language `sw`.
 - **Minimum:** Project builds, models + protocols + mocks exist, placeholder screens navigable.
 - **Done when:**
-  - [ ] `swift test` passes in `app/OnderaCore` (at least model Codable round-trip tests).
-  - [ ] App builds and runs on the iPhone simulator; every `AppRoute` placeholder is reachable by tapping through.
-  - [ ] Adding a new `.swift` file to any folder needs no `project.pbxproj` change (verified once).
-  - [ ] Every protocol has a mock, and `AppEnvironment.mock` drives the whole placeholder flow.
-  - [ ] Folder READMEs name owners; CLAUDE.md layout still accurate.
+  - [x] `swift test` passes in `app/OnderaCore` (at least model Codable round-trip tests).
+  - [x] App builds and runs on the iPhone simulator; every `AppRoute` placeholder is reachable by tapping through.
+  - [x] Adding a new `.swift` file to any folder needs no `project.pbxproj` change (verified once).
+  - [x] Every protocol has a mock, and `AppEnvironment.mock` drives the whole placeholder flow.
+  - [x] Folder READMEs name owners; CLAUDE.md layout still accurate.
 
 ---
 

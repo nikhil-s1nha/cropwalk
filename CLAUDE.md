@@ -79,7 +79,7 @@ When the user says **"work on a task"** / **"/task"** without a number: list the
 
 ## Conventions
 
-- Build/test: `cd app/OnderaCore && swift test`; app: `xcodebuild -project app/OnderaLeafWalk.xcodeproj -scheme OnderaLeafWalk -destination 'platform=iOS Simulator,name=iPhone 16' test`; backend: `cd backend && pytest`.
+- Build/test: `cd app/OnderaCore && swift test`; app: `xcodebuild -project app/OnderaLeafWalk.xcodeproj -scheme OnderaLeafWalk -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' test` (add `OS=` — names alone can be ambiguous; see `app/README.md`); backend: `cd backend && pytest`.
 - Every protocol in `Shared` has a `Mock…` implementation; `AppEnvironment.mock` must always compile and run the full flow.
 - Swift: SwiftUI views stay thin; logic goes in `OnderaCore` with tests. Use `Codable` models. Seeded RNG for anything random (testability).
 - Python: 3.11+, `requirements.txt` per folder, `pytest`. Secrets only in `.env`.

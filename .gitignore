@@ -56,3 +56,6 @@ tools/audio/out/
 # Editors
 .vscode/
 .idea/
+
+# Claude Code agent worktrees
+.claude/worktrees/

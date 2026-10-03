@@ -1,0 +1,14 @@
+{
+  "sourceLanguage" : "sw",
+  "strings" : {
+    "demo.badge" : {
+      "comment" : "Badge on screens showing synthetic/simulated data. DRAFT — native review (docs/SWAHILI_REVIEW.md).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Demo data" } },
+        "sw" : { "stringUnit" : { "state" : "needs_review", "value" : "Data ya mfano" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
